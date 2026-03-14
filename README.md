@@ -3,7 +3,7 @@ A Python-based DNS sinkhole to mitigate social media distractions and track netw
 Created on March 13th 2026
 
 
-# DNS Focus Blocker (Python)
+# DNS Focus Blocker in Python
 
 ## My "Why"
 As a 1st year Computer Science student, I noticed how short form content (Snapchat Spotlight/YouTube Shorts) was impacting my study sessions and attention span. I built this project to reclaim my focus through network engineering rather than just willpower (that fails me more often than not!).
