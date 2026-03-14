@@ -1,25 +1,26 @@
-# DNS-Reels-Blocker
-A Python-based DNS sinkhole to mitigate social media distractions and track network habits.
-Created on March 13th 2026
+# Reels Blocker for Focus
 
+## My Project Vision
+As a 1st year Computer Science student, I wanted to engineer a "distraction-free" environment by blocking the doomscrolling algorthims (Snapchat Spotlight and Instagram Reels) at the network and system level.
 
-# DNS Focus Blocker in Python
+## My Technical Hurdles and Evolution
+This project underwent several iterations as I navigated modern web security architectures:
 
-## My "Why"
-As a 1st year Computer Science student, I noticed how short form content (Snapchat Spotlight/YouTube Shorts) was impacting my study sessions and attention span. I built this project to reclaim my focus through network engineering rather than just willpower (that fails me more often than not!).
+1. **Phase 1: DNS Sinkholing (in Python)** Built a custom DNS server using `dnslib` to intercept UDP Port 53 traffic and sinkhole social media API domains.
+   
+2. **Phase 2: Browser Manipulation & Security Hurdles** Attempted to use JavaScript (Tampermonkey) to redirect Reels/Spotlight to a local Flask server. 
+   - **Hurdle:** Encountered **Content Security Policy (CSP)** restrictions, learning that high-security sites like Instagram and Snapchat block external redirects and the use of `eval()` to prevent cross-site scripting (XSS).
+   - **Hurdle:** Encountered **React Hydration Errors**. Modifying the DOM caused state mismatches in the React framework.
 
-## Key Features
-- **DNS Sinkholing:** Intercepts UDP traffic on Port 53 to block specific social media domains.
-- **Behavioral Nudge:** Redirects blocked requests to a local Flask web server displaying a "Get back to work" warning.
-- **Network Analytics:** Logs domain request frequency to a JSON database for habit analysis.
+3. **Phase 3: System Level Optimization (The Final Solution)** To maximize efficiency and bypass Application-Layer security, I migrated the blocking logic to the **Operating System Hosts File**. This provides a zero-latency, zero-RAM solution that works at the kernel level.
 
-## Technical Stack
-- **Language:** Python 3.x
-- **Libraries:** `dnslib` (DNS parsing), `flask` (Warning page server), `socket` (Network communication).
-- **Network Layer:** Operates at Layer 3/4 of the OSI Model.
+## Learning Points
+- **OSI Model:** Applied knowledge of Layer 3 (Network) vs. Layer 7 (Application) filtering.
+- **Web Security:** Deep dive into CSP (Content Security Policy) and why modern browsers block certain scripts.
+- **Framework Mechanics:** Understanding how React "Hydration" works and why it crashes when the DOM is modified externally.
+- **Efficiency:** Choosing the Hosts file over a running Python script to save system resources.
 
-## Learning Outcomes
-- Understanding the DNS request/response lifecycle.
-- Managing data persistence using JSON.
-- Implementing graceful error handling for malformed UDP packets.
-- Navigating the limitations of blocking encrypted (HTTPS) application-layer traffic.
+## Repository Structure
+- `/hosts_backup`: Reference list of blocked domains.
+- `dns_blocker_legacy.py`: Initial Python prototype for educational reference.
+- `README.md`: Project documentation.
